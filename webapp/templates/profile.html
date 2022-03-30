@@ -10,9 +10,9 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>SB Admin 2 - Tables</title>
+    <title>SB Admin 2 - Dashboard</title>
 
-    <!-- Custom fonts for this template -->
+    <!-- Custom fonts for this template-->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -25,14 +25,9 @@
       rel="stylesheet"
     />
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet" />
 
-    <!-- Custom styles for this page -->
-    <link
-      href="vendor/datatables/dataTables.bootstrap4.min.css"
-      rel="stylesheet"
-    />
     <style>
       .df-row {
         display: flex;
@@ -47,12 +42,6 @@
       }
       .input-group-append {
         cursor: pointer;
-      }
-      .text-center {
-        text-align: center;
-      }
-      input[type="checkbox"][readonly] {
-        pointer-events: none;
       }
     </style>
   </head>
@@ -80,7 +69,7 @@
         <hr class="sidebar-divider my-0" />
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a
@@ -94,7 +83,7 @@
         <div class="sidebar-heading">Account</div>
 
         <!-- Nav Item  -->
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="my-meal-records.html">
             <i class="fas fa-fw fa-calendar-check"></i>
             <span>My Meal Records</span></a
@@ -148,14 +137,12 @@
             class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
           >
             <!-- Sidebar Toggle (Topbar) -->
-            <form class="form-inline">
-              <button
-                id="sidebarToggleTop"
-                class="btn btn-link d-md-none rounded-circle mr-3"
-              >
-                <i class="fa fa-bars"></i>
-              </button>
-            </form>
+            <button
+              id="sidebarToggleTop"
+              class="btn btn-link d-md-none rounded-circle mr-3"
+            >
+              <i class="fa fa-bars"></i>
+            </button>
 
             <!-- Topbar Search -->
             <form
@@ -407,17 +394,13 @@
                   class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="userDropdown"
                 >
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="profile.html">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                   </a>
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="settings.html">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Settings
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
                   </a>
                   <div class="dropdown-divider"></div>
                   <a
@@ -440,126 +423,109 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Meal records</h1>
-            <p class="mb-4">
-              Meal Records contains daily meal details of individuals in monthly
-              basis.
-            </p>
-
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-lg-6 mb-4">
-                  <!-- Illustrations -->
-                  <div class="card shadow mb-4">
-                    <div
-                      class="card-header py-3 df-row"
-                      data-toggle="collapse"
-                      href="#daily-meal-card-body"
-                      role="button"
-                      aria-expanded="true"
-                      aria-controls="daily-meal-card-body"
-                      class="cursor-pointer"
-                    >
-                      <h6 class="m-0 font-weight-bold text-primary">
-                        Month Selection
-                      </h6>
-                    </div>
-                    <div
-                      class="collapse show card-body"
-                      id="daily-meal-card-body"
-                    >
-                      <div class="card card-body">
-                        <div class="text-center">
-                          <img
-                            class="img-fluid px-3 px-sm-4 mt-3 mb-4"
-                            style="width: 25rem"
-                            src="img/undraw_select_option.svg"
-                            alt="..."
-                          />
-                        </div>
-                        <section class="container">
-                          <form method="post">
-                            <div class="row flex-space-around mt-4">
-                              <label for="date">Month:</label>
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">User Profile</h1>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 mb-4">
+                <!-- Illustrations -->
+                <div class="card shadow mb-4">
+                  <div
+                    class="card-header py-3 df-row"
+                    class="card-header py-3 df-row"
+                    data-toggle="collapse"
+                    href="#daily-meal-card-body"
+                    role="button"
+                    aria-expanded="true"
+                    aria-controls="daily-meal-card-body"
+                    class="cursor-pointer"
+                  >
+                    <h6 class="m-0 font-weight-bold text-primary">
+                      Profile Details
+                    </h6>
+                  </div>
+                  <div
+                    class="collapse show card-body"
+                    id="daily-meal-card-body"
+                  >
+                    <div class="card card-body">
+                      <div class="text-center">
+                        <img
+                          class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+                          style="width: 25rem"
+                          src="img/undraw_profile_settings.svg"
+                          alt="..."
+                        />
+                      </div>
+                      <section class="container">
+                        <form method="post">
+                          <div class="row flex-space-around mt-4">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"
+                                  >Name</span
+                                >
+                              </div>
                               <input
-                                type="month"
-                                id="monthPicker"
-                                name="monthPicker"
+                                type="text"
+                                class="form-control"
+                                placeholder="Full Name"
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                                value="Fahim Rahman"
+                                readonly
                               />
                             </div>
-                            <div class="row flex-space-around mt-4">
-                              <button
-                                type="submit"
-                                name="save"
-                                class="btn btn-success btn-icon-split"
-                              >
-                                <span class="icon text-white-50">
-                                  <i class="fas fa-check"></i>
-                                </span>
-                                <span class="text">Update Table</span>
-                              </button>
+
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"
+                                  >Email</span
+                                >
+                              </div>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="example@email.com"
+                                aria-label="Email"
+                                aria-describedby="basic-addon1"
+                                value="fahimpranto002@gmail.com"
+                                readonly
+                              />
                             </div>
-                          </form>
-                        </section>
-                      </div>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">About</span>
+                              </div>
+                              <textarea
+                                class="form-control"
+                                aria-label="About"
+                                readonly
+                              >My about</textarea>
+                            </div>
+                          </div>
+
+                          <div class="row flex-space-around mt-4">
+                            <button
+                              type="submit"
+                              name="save"
+                              class="btn btn-success btn-icon-split"
+                            >
+                              <span class="icon text-white-50">
+                                <i class="fas fa-check"></i>
+                              </span>
+                              <span class="text">Save</span>
+                            </button>
+                          </div>
+                        </form>
+                      </section>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- My Meal Records Table -->
-            <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">
-                  My Meal Records Table (March 2022)
-                </h6>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table
-                    class="table table-bordered"
-                    id="dataTable"
-                    width="100%"
-                    cellspacing="0"
-                  >
-                    <thead>
-                      <tr>
-                        <th>Day</th>
-                        <th class="text-center">Lunch</th>
-                        <th class="text-center">Dinner</th>
-                      </tr>
-                    </thead>
-                    <tfoot>
-                      <tr>
-                        <th>Total</th>
-                        <th>1</th>
-                        <th>0</th>
-                      </tr>
-                    </tfoot>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td class="text-center">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            checked
-                            readonly
-                          />
-                        </td>
-                        <td class="text-center">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            readonly
-                          />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+              
             </div>
           </div>
           <!-- /.container-fluid -->
@@ -570,7 +536,12 @@
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright &copy; Your Website 2020</span>
+              <span
+                >Copyright &copy; Origin42
+                <script>
+                  document.write(new Date().getFullYear());
+                </script></span
+              >
             </div>
           </div>
         </footer>
@@ -634,19 +605,5 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-    <script>
-      var monthPicker = document.getElementById("monthPicker");
-      monthPicker.valueAsDate = new Date();
-
-      function checkboxDisabled() {
-        return false;
-      }
-    </script>
   </body>
 </html>

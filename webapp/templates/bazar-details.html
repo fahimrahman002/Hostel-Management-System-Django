@@ -10,16 +10,10 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>SB Admin 2 - Tables</title>
+    <title>Bazar Details - Tables</title>
 
     <!-- Custom fonts for this template -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet"
@@ -47,12 +41,6 @@
       }
       .input-group-append {
         cursor: pointer;
-      }
-      .text-center {
-        text-align: center;
-      }
-      input[type="checkbox"][readonly] {
-        pointer-events: none;
       }
     </style>
   </head>
@@ -94,7 +82,7 @@
         <div class="sidebar-heading">Account</div>
 
         <!-- Nav Item  -->
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="my-meal-records.html">
             <i class="fas fa-fw fa-calendar-check"></i>
             <span>My Meal Records</span></a
@@ -115,7 +103,7 @@
         <div class="sidebar-heading">Bazar Accounting</div>
 
         <!-- Nav Item  -->
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="bazar-details.html">
             <i class="fas fa-fw fa-table"></i>
             <span>All Bazar Details</span></a
@@ -440,10 +428,10 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Meal records</h1>
+            <h1 class="h3 mb-2 text-gray-800">Bazar Details</h1>
             <p class="mb-4">
-              Meal Records contains daily meal details of individuals in monthly
-              basis.
+              Bazar Details contains daily bazar details of individuals in
+              monthly basis.
             </p>
 
             <div class="container-fluid">
@@ -480,7 +468,7 @@
                         <section class="container">
                           <form method="post">
                             <div class="row flex-space-around mt-4">
-                              <label for="date">Month:</label>
+                              <label for="date">Date:</label>
                               <input
                                 type="month"
                                 id="monthPicker"
@@ -507,12 +495,11 @@
                 </div>
               </div>
             </div>
-
-            <!-- My Meal Records Table -->
+            <!-- Bazar Details Table -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">
-                  My Meal Records Table (March 2022)
+                  Bazar Details Table (March 2022)
                 </h6>
               </div>
               <div class="card-body">
@@ -525,36 +512,37 @@
                   >
                     <thead>
                       <tr>
-                        <th>Day</th>
-                        <th class="text-center">Lunch</th>
-                        <th class="text-center">Dinner</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Bazar Details</th>
+                        <th>Expense ৳</th>
                       </tr>
                     </thead>
                     <tfoot>
                       <tr>
+                        <th></th>
                         <th>Total</th>
-                        <th>1</th>
-                        <th>0</th>
+                        <th>1560</th>
                       </tr>
                     </tfoot>
                     <tbody>
                       <tr>
-                        <td>1</td>
-                        <td class="text-center">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            checked
-                            readonly
-                          />
-                        </td>
-                        <td class="text-center">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            readonly
-                          />
-                        </td>
+                        <td>Fahim</td>
+                        <td>29 March, 2022</td>
+                        <td>Moshla-180tk,tel 2kg-340tk</td>
+                        <td>520</td>
+                      </tr>
+                      <tr>
+                        <td>Nafi</td>
+                        <td>30 March, 2022</td>
+                        <td>Moshla-180tk,tel 2kg-340tk</td>
+                        <td>520</td>
+                      </tr>
+                      <tr>
+                        <td>Jubair</td>
+                        <td>31 March, 2022</td>
+                        <td>Moshla-180tk,tel 2kg-340tk</td>
+                        <td>520</td>
                       </tr>
                     </tbody>
                   </table>
@@ -643,10 +631,6 @@
     <script>
       var monthPicker = document.getElementById("monthPicker");
       monthPicker.valueAsDate = new Date();
-
-      function checkboxDisabled() {
-        return false;
-      }
     </script>
   </body>
 </html>

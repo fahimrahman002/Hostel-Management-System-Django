@@ -48,9 +48,6 @@
       .input-group-append {
         cursor: pointer;
       }
-      .text-center {
-        text-align: center;
-      }
       input[type="checkbox"][readonly] {
         pointer-events: none;
       }
@@ -94,7 +91,7 @@
         <div class="sidebar-heading">Account</div>
 
         <!-- Nav Item  -->
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="my-meal-records.html">
             <i class="fas fa-fw fa-calendar-check"></i>
             <span>My Meal Records</span></a
@@ -122,7 +119,7 @@
           >
         </li>
         <!-- Nav Item  -->
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="monthly-accounting.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Monthly Accounting</span></a
@@ -395,7 +392,7 @@
                   aria-expanded="false"
                 >
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                    >Douglas McGee</span
+                    >Fahim Rahman</span
                   >
                   <img
                     class="img-profile rounded-circle"
@@ -440,10 +437,11 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Meal records</h1>
+            <h1 class="h3 mb-2 text-gray-800">Manage Members</h1>
             <p class="mb-4">
-              Meal Records contains daily meal details of individuals in monthly
-              basis.
+              All users can see hostel member's details. *Only admin can manage
+              hostel members. After creating a member he/she can login with
+              their assigned email and password.
             </p>
 
             <div class="container-fluid">
@@ -461,7 +459,7 @@
                       class="cursor-pointer"
                     >
                       <h6 class="m-0 font-weight-bold text-primary">
-                        Month Selection
+                        Add Member Form
                       </h6>
                     </div>
                     <div
@@ -473,19 +471,112 @@
                           <img
                             class="img-fluid px-3 px-sm-4 mt-3 mb-4"
                             style="width: 25rem"
-                            src="img/undraw_select_option.svg"
+                            src="img/undraw_selecting_team.svg"
                             alt="..."
                           />
                         </div>
                         <section class="container">
                           <form method="post">
                             <div class="row flex-space-around mt-4">
-                              <label for="date">Month:</label>
-                              <input
-                                type="month"
-                                id="monthPicker"
-                                name="monthPicker"
-                              />
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span
+                                    class="input-group-text"
+                                    id="basic-addon1"
+                                    >Name</span
+                                  >
+                                </div>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Full Name"
+                                  aria-label="Username"
+                                  aria-describedby="basic-addon1"
+                                />
+                              </div>
+
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span
+                                    class="input-group-text"
+                                    id="basic-addon1"
+                                    >Email</span
+                                  >
+                                </div>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="example@email.com"
+                                  aria-label="Email"
+                                  aria-describedby="basic-addon1"
+                                />
+                              </div>
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span
+                                    class="input-group-text"
+                                    id="basic-addon1"
+                                    >Contact Number</span
+                                  >
+                                </div>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="01xxxxxxxxx"
+                                  aria-label="Contact Number"
+                                  aria-describedby="basic-addon1"
+                                />
+                              </div>
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span
+                                    class="input-group-text"
+                                    id="basic-addon1"
+                                    >Password</span
+                                  >
+                                </div>
+                                <input
+                                  type="password"
+                                  class="form-control"
+                                  placeholder="******"
+                                  aria-label="Password"
+                                  aria-describedby="basic-addon1"
+                                />
+                              </div>
+                            </div>
+                            <div class="row flex-space-around mt-4">
+                              <label for="date">Admin Privileges:</label>
+                              <div class="form-check">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  value="yes"
+                                  id="yesCheckbox"
+                                  name="adminPrivilege"
+                                />
+                                <label
+                                  class="form-check-label"
+                                  for="yesCheckbox"
+                                >
+                                  Yes
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  value="no"
+                                  id="noCheckbox"
+                                  name="adminPrivilege"
+                                  checked
+                                />
+                                <label
+                                  class="form-check-label"
+                                  for="noCheckbox"
+                                >
+                                  No
+                                </label>
+                              </div>
                             </div>
                             <div class="row flex-space-around mt-4">
                               <button
@@ -496,7 +587,7 @@
                                 <span class="icon text-white-50">
                                   <i class="fas fa-check"></i>
                                 </span>
-                                <span class="text">Update Table</span>
+                                <span class="text">Add Member</span>
                               </button>
                             </div>
                           </form>
@@ -507,12 +598,11 @@
                 </div>
               </div>
             </div>
-
-            <!-- My Meal Records Table -->
+            <!-- All Members Table -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">
-                  My Meal Records Table (March 2022)
+                  All Members Table
                 </h6>
               </div>
               <div class="card-body">
@@ -525,21 +615,18 @@
                   >
                     <thead>
                       <tr>
-                        <th>Day</th>
-                        <th class="text-center">Lunch</th>
-                        <th class="text-center">Dinner</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact Number</th>
+                        <th>Admin Privilege</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
-                    <tfoot>
-                      <tr>
-                        <th>Total</th>
-                        <th>1</th>
-                        <th>0</th>
-                      </tr>
-                    </tfoot>
                     <tbody>
                       <tr>
-                        <td>1</td>
+                        <td>Fahim</td>
+                        <td>fahimpranto002@gmail.com</td>
+                        <td>01615990017</td>
                         <td class="text-center">
                           <input
                             class="form-check-input"
@@ -548,12 +635,27 @@
                             readonly
                           />
                         </td>
+                        <td>
+                          <a href="#" class="btn btn-danger btn-circle btn-sm">
+                            <i class="fas fa-trash"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Nafiul</td>
+                        <td>nafiul@gmail.com</td>
+                        <td>01615990017</td>
                         <td class="text-center">
                           <input
                             class="form-check-input"
                             type="checkbox"
                             readonly
                           />
+                        </td>
+                        <td>
+                          <a href="#" class="btn btn-danger btn-circle btn-sm">
+                            <i class="fas fa-trash"></i>
+                          </a>
                         </td>
                       </tr>
                     </tbody>
@@ -643,10 +745,6 @@
     <script>
       var monthPicker = document.getElementById("monthPicker");
       monthPicker.valueAsDate = new Date();
-
-      function checkboxDisabled() {
-        return false;
-      }
     </script>
   </body>
 </html>
