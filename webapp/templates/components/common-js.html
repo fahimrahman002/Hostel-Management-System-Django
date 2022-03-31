@@ -7,3 +7,28 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{s}}js/sb-admin-2.min.js"></script>
+<!-- toastr cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{% if messages %} {% for message in messages%}
+<script>
+  var type = "{{message.tags}}";
+  var message = "{{message}}";
+  toastr.options.timeOut = 2000;
+  switch (type) {
+    case "info":
+      toastr.info(message);
+      break;
+    case "success":
+      toastr.success(message);
+      break;
+    case "warning":
+      toastr.warning(message);
+      break;
+    case "error":
+      toastr.error(message);
+      break;
+    default:
+      toastr.error("An error occurred");
+  }
+</script>
+{% endfor %} {% endif %}

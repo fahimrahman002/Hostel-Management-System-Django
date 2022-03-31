@@ -119,3 +119,46 @@ def dashboard(request):
 
     }
     return render(request, 'dashboard.html', context)
+
+
+def profile(request):
+    context = {
+    }
+
+    return render(request, 'profile.html', context)
+
+def settings(request):
+    context = {
+    }
+
+    return render(request, 'settings.html', context)
+
+def manage_members(request):
+    context = {
+    }
+
+    return render(request, 'manage-members.html', context)
+
+def monthly_accounting(request):
+    context = {
+    }
+
+    return render(request, 'monthly-accounting.html', context)
+
+def bazar_details(request):
+    context = {
+    }
+
+    return render(request, 'bazar-details.html', context)
+
+def my_bazar_details(request):
+    context = {
+    }
+
+    return render(request, 'my-bazar-details.html', context)
+
+def my_meal_records(request):
+    context = {
+    }
+
+    return render(request, 'my-meal-records.html', context)
