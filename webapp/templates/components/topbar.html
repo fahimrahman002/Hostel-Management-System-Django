@@ -248,7 +248,7 @@ class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
       aria-expanded="false"
     >
       <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-        >Douglas McGee</span
+        >{{user.first_name}}</span
       >
       <img
         class="img-profile rounded-circle"
@@ -319,7 +319,7 @@ aria-hidden="true"
       >
         Cancel
       </button>
-      <a class="btn btn-primary" href="login.html">Logout</a>
+      <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
-{% extends 'components/base.html' %} {% block extra_css %} {% endblock extra_css
-%} {% block title %}Profile{% endblock title%} {% block content %}
+{% extends 'components/base.html' %} 
+{% block extra_css %} {% endblock extra_css %} 
+{% block title %}Profile{% endblock title%} {% block content %}
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -67,6 +68,21 @@
                       readonly
                     />
                   </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="phoneInput"
+                        >Phone Number</span
+                      >
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Phone Number"
+                      aria-label="Phone Number"
+                      aria-describedby="phoneInput"
+                      value="01615990017"
+                      readonly
+                    />
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">About</span>

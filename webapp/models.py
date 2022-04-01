@@ -18,3 +18,17 @@ class Member(models.Model):
     phone = models.CharField(max_length=15, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class MealRecord(models.Model):
+    member=models.ForeignKey(Member,on_delete=models.CASCADE)
+    date=models.DateField(blank=True,null=True)
+    meal_lunch=models.BooleanField(default=True)
+    meal_dinner=models.BooleanField(default=True)
+    
+class BazarDetail(models.Model):
+    hostel=models.ForeignKey(Hostel,on_delete=models.CASCADE)
+    member=models.ForeignKey(Member,on_delete=models.SET_NULL,blank=True,null=True)
+    date=models.DateField(blank=True,null=True)
+    details=models.TextField(default="", blank=True, null=True)
+    expense=models.IntegerField(default=0)
+    

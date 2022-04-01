@@ -10,6 +10,9 @@ from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+# For email validation
+from django.forms import EmailField
+from django.core.exceptions import ValidationError
 # For django-cleanup
 from django.apps import apps
 apps.get_models()
@@ -18,11 +21,8 @@ apps.get_models()
 def home(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
-
-    context = {
-    }
-
-    return redirect('login')
+    else:
+        return redirect('login')
 
 
 class Login(View):
@@ -51,10 +51,25 @@ class Login(View):
 
 def logout(request):
     auth.logout(request)
-    return redirect('home')
+    return redirect('login')
 
 
 class SignUp(View):
+    def isEmailValid(self,email):
+        try:
+            EmailField().clean(email)
+            return True
+        except ValidationError:
+            return False
+        
+    def validateUserInput(self, email, password, confirm_password):
+        if password != confirm_password:
+            return "Confirm Password is not matching."
+        elif len(password) < 6:
+            return "Password must be at lease 6 charecters long"
+        elif self.isEmailValid(email) == False:
+            return "Please enter a valid email."
+        return None
 
     def get(self, request):
 
@@ -72,12 +87,14 @@ class SignUp(View):
             hostel_title = request.POST['hostel_title']
             full_name = request.POST['full_name']
             email = request.POST['email']
-            phone = request.POST['phone']
             password = request.POST['password']
             confirm_password = request.POST['confirm_password']
 
-            if password != confirm_password:
-                messages.error(request, 'Confirm password is not matching.')
+            check_user_input = self.validateUserInput(
+                email, password, confirm_password)
+
+            if check_user_input != None:
+                messages.error(request, check_user_input)
                 return render(request, 'register.html', context)
 
             if User.objects.filter(email=email).first():
@@ -127,11 +144,13 @@ def profile(request):
 
     return render(request, 'profile.html', context)
 
+
 def settings(request):
     context = {
     }
 
     return render(request, 'settings.html', context)
+
 
 def manage_members(request):
     context = {
@@ -139,11 +158,13 @@ def manage_members(request):
 
     return render(request, 'manage-members.html', context)
 
+
 def monthly_accounting(request):
     context = {
     }
 
     return render(request, 'monthly-accounting.html', context)
+
 
 def bazar_details(request):
     context = {
@@ -151,11 +172,13 @@ def bazar_details(request):
 
     return render(request, 'bazar-details.html', context)
 
+
 def my_bazar_details(request):
     context = {
     }
 
     return render(request, 'my-bazar-details.html', context)
+
 
 def my_meal_records(request):
     context = {
