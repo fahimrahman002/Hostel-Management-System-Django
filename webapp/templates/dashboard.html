@@ -37,6 +37,7 @@
             </div>
             <section class="container">
               <form method="post">
+                {% csrf_token %}
                 <div class="row flex-space-around mt-4">
                   <label for="date">Date:</label>
                   <input
@@ -79,7 +80,7 @@
                 <div class="row flex-space-around mt-4">
                   <button
                     type="submit"
-                    name="save"
+                    name="meal_record_save"
                     class="btn btn-success btn-icon-split"
                   >
                     <span class="icon text-white-50">
@@ -89,7 +90,7 @@
                   </button>
                   <button
                     type="submit"
-                    name="update"
+                    name="meal_record_update"
                     class="btn btn-primary btn-icon-split"
                   >
                     <span class="icon text-white-50">
@@ -135,36 +136,39 @@
             </div>
             <section class="container">
               <form method="post">
+                {% csrf_token %}
                 <div class="row flex-space-around mt-4">
                   <label for="date">Date:</label>
                   <input
                     type="date"
                     id="bazarDatePicker"
-                    name="bazarDatePicker"
+                    name="bazar_date"
                   />
                 </div>
 
                 <div class="row flex-space-around mt-4">
-                  <label for="date">Bazar Details:</label>
+                  <label for="date">Details:</label>
                   <textarea
                     class="form-control"
                     id="bazarDetails"
                     rows="3"
+                    name="bazar_details"
                   ></textarea>
                 </div>
                 <div class="row flex-space-around mt-4">
-                  <label for="date">Bazar Cost:</label>
+                  <label for="date">Expense:</label>
                   <input
                     type="number"
                     class="form-control"
-                    id="bazarCost"
+                    id="bazarExpense"
                     placeholder="123"
+                    name="bazar_expense"
                   />
                 </div>
                 <div class="row flex-space-around mt-4">
                   <button
                     type="submit"
-                    name="save"
+                    name="bazar_details_save"
                     class="btn btn-success btn-icon-split"
                   >
                     <span class="icon text-white-50">
@@ -174,7 +178,7 @@
                   </button>
                   <button
                     type="submit"
-                    name="update"
+                    name="bazar_details_update"
                     class="btn btn-primary btn-icon-split"
                   >
                     <span class="icon text-white-50">

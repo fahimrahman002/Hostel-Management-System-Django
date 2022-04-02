@@ -20,6 +20,7 @@ class Member(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class MealRecord(models.Model):
+    hostel=models.ForeignKey(Hostel,on_delete=models.CASCADE)
     member=models.ForeignKey(Member,on_delete=models.CASCADE)
     date=models.DateField(blank=True,null=True)
     meal_lunch=models.BooleanField(default=True)

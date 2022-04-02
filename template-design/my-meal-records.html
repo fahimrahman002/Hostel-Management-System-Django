@@ -63,8 +63,7 @@
       <!-- Sidebar -->
       <ul
         class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-        id="accordionSidebar"
-      >
+        id="accordionSidebar">
         <!-- Sidebar - Brand -->
         <a
           class="sidebar-brand d-flex align-items-center justify-content-center"
@@ -73,7 +72,9 @@
           <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
           </div>
-          <div class="sidebar-brand-text mx-3">Hostel Admin <sup>NF</sup></div>
+          <div class="sidebar-brand-text mx-3">
+            Hostel Title<sup>O<sub>42</sub></sup>
+          </div>
         </a>
 
         <!-- Divider -->
@@ -102,6 +103,13 @@
         </li>
         <!-- Nav Item  -->
         <li class="nav-item">
+          <a class="nav-link" href="my-investments.html">
+            <i class="fas fa-fw fa-hand-holding-dollar"></i>
+            <span>My Investments</span></a
+          >
+        </li>
+        <!-- Nav Item  -->
+        <li class="nav-item">
           <a class="nav-link" href="my-bazar-details.html">
             <i class="fas fa-fw fa-calendar-week"></i>
             <span>My Bazar Details</span></a
@@ -116,9 +124,16 @@
 
         <!-- Nav Item  -->
         <li class="nav-item">
-          <a class="nav-link" href="bazar-details.html">
+          <a class="nav-link" href="all-bazar-details.html">
             <i class="fas fa-fw fa-table"></i>
             <span>All Bazar Details</span></a
+          >
+        </li>
+        <!-- Nav Item  -->
+        <li class="nav-item">
+          <a class="nav-link" href="all-investments.html">
+            <i class="fas fa-fw fa-circle-dollar-to-slot"></i>
+            <span>All Investments</span></a
           >
         </li>
         <!-- Nav Item  -->
@@ -126,6 +141,20 @@
           <a class="nav-link" href="monthly-accounting.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Monthly Accounting</span></a
+          >
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
+
+        <!-- Heading -->
+        <div class="sidebar-heading">Administration</div>
+
+        <!-- Nav Item  -->
+        <li class="nav-item">
+          <a class="nav-link" href="manage-members.html">
+            <i class="fas fa-fw fa-users-line"></i>
+            <span>Manage Members</span></a
           >
         </li>
 
@@ -453,6 +482,7 @@
                   <div class="card shadow mb-4">
                     <div
                       class="card-header py-3 df-row"
+                      class="card-header py-3 df-row"
                       data-toggle="collapse"
                       href="#daily-meal-card-body"
                       role="button"
@@ -461,7 +491,7 @@
                       class="cursor-pointer"
                     >
                       <h6 class="m-0 font-weight-bold text-primary">
-                        Month Selection
+                        Daily Meal Record
                       </h6>
                     </div>
                     <div
@@ -473,19 +503,50 @@
                           <img
                             class="img-fluid px-3 px-sm-4 mt-3 mb-4"
                             style="width: 25rem"
-                            src="img/undraw_select_option.svg"
+                            src="img/undraw_date_picker.svg"
                             alt="..."
                           />
                         </div>
                         <section class="container">
                           <form method="post">
                             <div class="row flex-space-around mt-4">
-                              <label for="date">Month:</label>
+                              <label for="date">Date:</label>
                               <input
-                                type="month"
-                                id="monthPicker"
-                                name="monthPicker"
+                                type="date"
+                                id="mealDatePicker"
+                                name="mealDatePicker"
                               />
+                            </div>
+                            <div class="row flex-space-around mt-4">
+                              <label for="date">Meal:</label>
+                              <div class="custom-control custom-checkbox small">
+                                <input
+                                  type="checkbox"
+                                  class="custom-control-input"
+                                  value="lunch"
+                                  id="lunchCheckbox"
+                                  checked
+                                />
+                                <label
+                                  class="custom-control-label"
+                                  for="lunchCheckbox"
+                                  >Lunch</label
+                                >
+                              </div>
+                              <div class="custom-control custom-checkbox small">
+                                <input
+                                  type="checkbox"
+                                  class="custom-control-input"
+                                  value="dinner"
+                                  id="dinnerCheckbox"
+                                  checked
+                                />
+                                <label
+                                  class="custom-control-label"
+                                  for="dinnerCheckbox"
+                                  >Dinner</label
+                                >
+                              </div>
                             </div>
                             <div class="row flex-space-around mt-4">
                               <button
@@ -496,7 +557,17 @@
                                 <span class="icon text-white-50">
                                   <i class="fas fa-check"></i>
                                 </span>
-                                <span class="text">Update Table</span>
+                                <span class="text">Save</span>
+                              </button>
+                              <button
+                                type="submit"
+                                name="update"
+                                class="btn btn-primary btn-icon-split"
+                              >
+                                <span class="icon text-white-50">
+                                  <i class="fas fa-flag"></i>
+                                </span>
+                                <span class="text">Update</span>
                               </button>
                             </div>
                           </form>
@@ -504,16 +575,30 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div
               </div>
             </div>
 
             <!-- My Meal Records Table -->
             <div class="card shadow mb-4">
-              <div class="card-header py-3">
+              <div class="card-header py-3 df-row">
                 <h6 class="m-0 font-weight-bold text-primary">
                   My Meal Records Table (March 2022)
                 </h6>
+                <form method="post">
+                  <input type="month" id="monthPicker" name="monthPicker" />
+
+                  <button
+                    type="submit"
+                    name="save"
+                    class="btn btn-success btn-icon-split"
+                  >
+                    <span class="icon text-white-50">
+                      <i class="fas fa-rotate-right"></i>
+                    </span>
+                    <span class="text">Update Table</span>
+                  </button>
+                </form>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -641,6 +726,7 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
     <script>
+      document.getElementById("mealDatePicker").valueAsDate = new Date();
       var monthPicker = document.getElementById("monthPicker");
       monthPicker.valueAsDate = new Date();
 

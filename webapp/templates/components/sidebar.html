@@ -55,10 +55,17 @@ id="accordionSidebar"
 <div class="sidebar-heading">Bazar Accounting</div>
 
 <!-- Nav Item  -->
-<li class="nav-item {% if request.resolver_match.url_name == 'bazar_details' %}active{% endif %}">
-  <a class="nav-link" href="{% url 'bazar_details' %}">
+<li class="nav-item {% if request.resolver_match.url_name == 'all_bazar_details' %}active{% endif %}">
+  <a class="nav-link" href="{% url 'all_bazar_details' %}">
     <i class="fas fa-fw fa-table"></i>
     <span>All Bazar Details</span></a
+  >
+</li>
+<!-- Nav Item  -->
+<li class="nav-item">
+  <a class="nav-link" href="all-investments.html">
+    <i class="fas fa-fw fa-circle-dollar-to-slot"></i>
+    <span>All Investments</span></a
   >
 </li>
 <!-- Nav Item  -->

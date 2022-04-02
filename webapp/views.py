@@ -55,13 +55,13 @@ def logout(request):
 
 
 class SignUp(View):
-    def isEmailValid(self,email):
+    def isEmailValid(self, email):
         try:
             EmailField().clean(email)
             return True
         except ValidationError:
             return False
-        
+
     def validateUserInput(self, email, password, confirm_password):
         if password != confirm_password:
             return "Confirm Password is not matching."
@@ -79,10 +79,6 @@ class SignUp(View):
         return render(request, 'register.html', context)
 
     def post(self, request):
-
-        context = {
-
-        }
         try:
             hostel_title = request.POST['hostel_title']
             full_name = request.POST['full_name']
@@ -95,11 +91,11 @@ class SignUp(View):
 
             if check_user_input != None:
                 messages.error(request, check_user_input)
-                return render(request, 'register.html', context)
+                return render(request, 'register.html')
 
             if User.objects.filter(email=email).first():
                 messages.error(request, 'Email already exists.')
-                return render(request, 'register.html', context)
+                return render(request, 'register.html')
 
             new_hostel = Hostel(title=hostel_title)
             new_hostel.save()
@@ -124,20 +120,34 @@ class SignUp(View):
                     request, "Account already exists with the email.")
             else:
                 messages.error(request, "Something went wrong")
-            return render(request, 'register.html', context)
+            return render(request, 'register.html')
 
         return redirect('login')
 
 
+@method_decorator(login_required, name='dispatch')
+class Dashboard(View):
+    def get(self, request):
+        context = {
+
+        }
+        return render(request, 'dashboard.html', context)
+
+    def post(self, request):
+        if 'bazar_details_save' in request.POST:
+            date=request.POST['bazar_date']
+            details=request.POST['bazar_details']
+            expense=request.POST['bazar_expense']
+            
+            # bazar_detail=BazarDetail.objects.filter()
+            
+        context = {
+
+        }
+        return render(request, 'dashboard.html', context)
+
+
 @login_required(login_url='login')
-@csrf_exempt
-def dashboard(request):
-    context = {
-
-    }
-    return render(request, 'dashboard.html', context)
-
-
 def profile(request):
     context = {
     }
@@ -165,12 +175,26 @@ def monthly_accounting(request):
 
     return render(request, 'monthly-accounting.html', context)
 
-
-def bazar_details(request):
+def all_investments(request):
     context = {
     }
 
-    return render(request, 'bazar-details.html', context)
+    return render(request, 'all-investmens.html', context)
+
+
+def my_investments(request):
+    context = {
+    }
+
+    return render(request, 'my-investments.html', context)
+
+
+
+def all_bazar_details(request):
+    context = {
+    }
+
+    return render(request, 'all-bazar-details.html', context)
 
 
 def my_bazar_details(request):

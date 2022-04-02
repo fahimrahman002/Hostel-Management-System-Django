@@ -10,9 +10,9 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Bazar Details</title>
 
-    <!-- Custom fonts for this template-->
+    <!-- Custom fonts for this template -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -25,9 +25,14 @@
       rel="stylesheet"
     />
 
-    <!-- Custom styles for this template-->
+    <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet" />
 
+    <!-- Custom styles for this page -->
+    <link
+      href="vendor/datatables/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
     <style>
       .df-row {
         display: flex;
@@ -70,7 +75,7 @@
         <hr class="sidebar-divider my-0" />
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a
@@ -91,7 +96,7 @@
           >
         </li>
         <!-- Nav Item  -->
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="my-investments.html">
             <i class="fas fa-fw fa-hand-holding-dollar"></i>
             <span>My Investments</span></a
@@ -166,12 +171,14 @@
             class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
           >
             <!-- Sidebar Toggle (Topbar) -->
-            <button
-              id="sidebarToggleTop"
-              class="btn btn-link d-md-none rounded-circle mr-3"
-            >
-              <i class="fa fa-bars"></i>
-            </button>
+            <form class="form-inline">
+              <button
+                id="sidebarToggleTop"
+                class="btn btn-link d-md-none rounded-circle mr-3"
+              >
+                <i class="fa fa-bars"></i>
+              </button>
+            </form>
 
             <!-- Topbar Search -->
             <form
@@ -423,13 +430,17 @@
                   class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="userDropdown"
                 >
-                  <a class="dropdown-item" href="profile.html">
+                  <a class="dropdown-item" href="#">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                   </a>
-                  <a class="dropdown-item" href="settings.html">
+                  <a class="dropdown-item" href="#">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Settings
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Activity Log
                   </a>
                   <div class="dropdown-divider"></div>
                   <a
@@ -452,191 +463,141 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <div
-              class="d-sm-flex align-items-center justify-content-between mb-4"
-            >
-              <h1 class="h3 mb-0 text-gray-800">User Settings</h1>
-            </div>
-            <div class="row">
-              <div class="col-lg-6 mb-4">
-                <!-- Illustrations -->
-                <div class="card shadow mb-4">
-                  <div
-                    class="card-header py-3 df-row"
-                    class="card-header py-3 df-row"
-                    data-toggle="collapse"
-                    href="#daily-meal-card-body"
-                    role="button"
-                    aria-expanded="true"
-                    aria-controls="daily-meal-card-body"
-                    class="cursor-pointer"
-                  >
-                    <h6 class="m-0 font-weight-bold text-primary">
-                      Profile Settings
-                    </h6>
-                  </div>
-                  <div
-                    class="collapse show card-body"
-                    id="daily-meal-card-body"
-                  >
-                    <div class="card card-body">
-                      <div class="text-center">
-                        <img
-                          class="img-fluid px-3 px-sm-4 mt-3 mb-4"
-                          style="width: 25rem"
-                          src="img/undraw_profile_settings.svg"
-                          alt="..."
-                        />
+            <h1 class="h3 mb-2 text-gray-800">My Investments</h1>
+            <p class="mb-4">
+              My Investments contains investments of individuals in
+              monthly basis.
+            </p>
+
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-6 mb-4">
+                  <!-- Illustrations -->
+                  <div class="card shadow mb-4">
+                    <div
+                      class="card-header py-3 df-row"
+                      data-toggle="collapse"
+                      href="#daily-bazar-card-body"
+                      role="button"
+                      aria-expanded="true"
+                      aria-controls="daily-bazar-card-body"
+                      class="cursor-pointer"
+                    >
+                      <h6 class="m-0 font-weight-bold text-primary">
+                        Investment Record
+                      </h6>
+                    </div>
+                    <div
+                      class="collapse show card-body"
+                      id="daily-bazar-card-body"
+                    >
+                      <div class="card card-body">
+                        <div class="text-center">
+                          <img
+                            class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+                            style="width: 25rem"
+                            src="img/undraw_savings.svg"
+                            alt="..."
+                          />
+                        </div>
+                        <section class="container">
+                          <form method="post">
+                            <div class="row flex-space-around mt-4">
+                              <label for="date">Date:</label>
+                              <input
+                                type="date"
+                                id="investmentDatePicker"
+                                name="investmentDatePicker"
+                              />
+                            </div>
+
+                            <div class="row flex-space-around mt-4">
+                              <label for="date">Investment Amount:</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="investmentAmount"
+                                placeholder="123"
+                              />
+                            </div>
+                            <div class="row flex-space-around mt-4">
+                              <button
+                                type="submit"
+                                name="save"
+                                class="btn btn-success btn-icon-split"
+                              >
+                                <span class="icon text-white-50">
+                                  <i class="fas fa-check"></i>
+                                </span>
+                                <span class="text">Save</span>
+                              </button>
+                              <button
+                                type="submit"
+                                name="update"
+                                class="btn btn-primary btn-icon-split"
+                              >
+                                <span class="icon text-white-50">
+                                  <i class="fas fa-flag"></i>
+                                </span>
+                                <span class="text">Update</span>
+                              </button>
+                            </div>
+                          </form>
+                        </section>
                       </div>
-                      <section class="container">
-                        <form method="post">
-                          <div class="row flex-space-around mt-4">
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"
-                                  >Name</span
-                                >
-                              </div>
-                              <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Full Name"
-                                aria-label="Username"
-                                aria-describedby="basic-addon1"
-                              />
-                            </div>
-
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"
-                                  >Email</span
-                                >
-                              </div>
-                              <input
-                                type="text"
-                                class="form-control"
-                                placeholder="example@email.com"
-                                aria-label="Email"
-                                aria-describedby="basic-addon1"
-                              />
-                            </div>
-                            <div class="input-group">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text">About</span>
-                              </div>
-                              <textarea
-                                class="form-control"
-                                aria-label="About"
-                              ></textarea>
-                            </div>
-                          </div>
-
-                          <div class="row flex-space-around mt-4">
-                            <button
-                              type="submit"
-                              name="save"
-                              class="btn btn-success btn-icon-split"
-                            >
-                              <span class="icon text-white-50">
-                                <i class="fas fa-check"></i>
-                              </span>
-                              <span class="text">Save</span>
-                            </button>
-                          </div>
-                        </form>
-                      </section>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6 mb-4">
-                <!-- Illustrations -->
-                <div class="card shadow mb-4">
-                  <div
-                    class="card-header py-3 df-row"
-                    data-toggle="collapse"
-                    href="#daily-bazar-card-body"
-                    role="button"
-                    aria-expanded="true"
-                    aria-controls="daily-bazar-card-body"
-                    class="cursor-pointer"
+            </div>
+            <!-- Bazar Details Table -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3 df-row">
+                <h6 class="m-0 font-weight-bold text-primary">
+                  Bazar Details Table (March 2022)
+                </h6>
+                <form method="post">
+                  <input type="month" id="monthPicker" name="monthPicker" />
+
+                  <button
+                    type="submit"
+                    name="save"
+                    class="btn btn-success btn-icon-split"
                   >
-                    <h6 class="m-0 font-weight-bold text-primary">
-                      Password Settings
-                    </h6>
-                  </div>
-                  <div
-                    class="collapse show card-body"
-                    id="daily-bazar-card-body"
+                    <span class="icon text-white-50">
+                      <i class="fas fa-rotate-right"></i>
+                    </span>
+                    <span class="text">Update Table</span>
+                  </button>
+                </form>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table
+                    class="table table-bordered"
+                    id="dataTable"
+                    width="100%"
+                    cellspacing="0"
                   >
-                    <div class="card card-body">
-                      <div class="text-center">
-                        <img
-                          class="img-fluid px-3 px-sm-4 mt-3 mb-4"
-                          style="width: 25rem"
-                          src="img/undraw_security.svg"
-                          alt="..."
-                        />
-                      </div>
-                      <section class="container">
-                        <form method="post">
-                          <div class="row flex-space-around mt-4">
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"
-                                  >Old Password</span
-                                >
-                              </div>
-                              <input
-                                type="password"
-                                class="form-control"
-                                aria-label="Old Password"
-                                aria-describedby="basic-addon1"
-                              />
-                            </div>
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"
-                                  >New Password</span
-                                >
-                              </div>
-                              <input
-                                type="password"
-                                class="form-control"
-                                aria-label="New Password"
-                                aria-describedby="basic-addon1"
-                              />
-                            </div>
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"
-                                  >Confirm Password</span
-                                >
-                              </div>
-                              <input
-                                type="password"
-                                class="form-control"
-                                aria-label="Confirm Password"
-                                aria-describedby="basic-addon1"
-                              />
-                            </div>
-                          </div>
-                          <div class="row flex-space-around mt-4">
-                            <button
-                              type="submit"
-                              name="save"
-                              class="btn btn-success btn-icon-split"
-                            >
-                              <span class="icon text-white-50">
-                                <i class="fas fa-check"></i>
-                              </span>
-                              <span class="text">Save</span>
-                            </button>
-                          </div>
-                        </form>
-                      </section>
-                    </div>
-                  </div>
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Investment ৳</th>
+                      </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                        <th>Total</th>
+                        <th>1560</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                      <tr>
+                        <td>29 March, 2022</td>
+                        <td>1560</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -649,12 +610,7 @@
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span
-                >Copyright &copy; Origin42
-                <script>
-                  document.write(new Date().getFullYear());
-                </script></span
-              >
+              <span>Copyright &copy; Your Website 2020</span>
             </div>
           </div>
         </footer>
@@ -718,5 +674,16 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+    <script>
+      document.getElementById("investmentDatePicker").valueAsDate = new Date();
+      var monthPicker = document.getElementById("monthPicker");
+      monthPicker.valueAsDate = new Date();
+    </script>
   </body>
 </html>
